@@ -1,0 +1,37 @@
+{{>header}}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 pt-4 pb-4">
+        <div class="todo-list rounded p-4 scrollbar" style="background-color:#fff; max-height: 524px;" id="style-4">
+
+          <div class="force-overflow">
+          <div class="todo-create-action mb-3">
+            <h4 class="d-inline align-middle">Todo List</h4> 
+            <a href="/todo/create" class="btn btn-secondary btn-sm ml-2"><i class="fa fa-plus"></i> Create new todo</a>
+            <a href="/todo/trash" class="btn btn-danger btn-sm float-right" title="Trash"><i class="fa fa-trash"></i> Trash</a>
+          </div> 
+          
+          {{#if todo_list}}
+            <ul>
+              {{#each todo_list}}
+
+                <li>{{this.name}} 
+                  <span class="action-link float-right">
+                    <a href="/todo/edit/{{this._id}}"><i class="fa fa-pencil"></i></a> 
+                    <a href="/todo/delete/{{this._id}}"><i class="fa fa-times"></i></a>
+                  </span>
+                </li>
+
+              {{/each}}
+            </ul>
+          {{else}}
+            <span class="data-not-found">not found!</span>
+          {{/if}}
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+{{>footer}}

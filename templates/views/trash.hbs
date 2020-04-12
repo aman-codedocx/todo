@@ -1,0 +1,34 @@
+{{>header}}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 pt-4 pb-4">
+        <div class="todo-list rounded p-4" style="background-color:#fff;">
+          <div class="todo-create-action mb-3">
+            <h4 class="d-inline align-middle">Trash</h4> 
+            <a href="/todo" class="btn btn-secondary btn-sm ml-2"><i class="fa fa-eye"></i> View all todo</a>
+            <a href="/todo/trash/empty" class="btn btn-danger btn-sm float-right"><i class="fa fa-trash"></i> Delete all</a>
+          </div> 
+
+          {{#if todo_list}}
+	          <ul>
+	            {{#each todo_list}}
+
+	              <li>{{this.name}} 
+	                <span class="action-link float-right">
+	                  <a href="/todo/restore/{{this._id}}"><i class="fa fa-undo"></i></a> 
+	                  <a href="/todo/force/delete/{{this._id}}"><i class="fa fa-trash"></i></a>
+	                </span></li>
+
+	            {{/each}}
+	          </ul>
+          {{else}}
+            <span class="data-not-found">trash is empty!</span>
+          {{/if}}
+
+        </div>
+    </div>
+  </div>
+</div>
+
+{{>footer}}
